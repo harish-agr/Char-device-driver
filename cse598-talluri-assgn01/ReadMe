@@ -1,0 +1,39 @@
+READ ME
+
+--------------------------------------------------------------------------------------------------------
+Files:
+1. Squeue_static.c - contains the driver implemented statically.
+2. Squeue_dynamic.c - contains the driver implemented dynamically.
+3. main_1.c - contains the user code. 
+4. main_1_static.c - user code for perf (for static implementations). 
+5. Makefile - contains the make file, which creats the static, dynamic and user codes object file.
+
+----------------------------------------------------------------------------------------------------------
+Steps:
+1. Unzip the folder
+2. Enter the folder in the terminal using "cd" command
+3. Enter "source /home/esp/SDK/environment-setup*"
+4. Enter "make all" command in the terminal
+4. You now get Squeue_dynamic.ko, Squeue_static.ko and main_1 object files
+5. These three object files need to be loaded into the memory card of the galileo board.  
+6. To test dynamic queue.
+	a. In the board load Squeue_dynamic.ko using "insmod Squeue_dynamic.ko"
+	b. run "./main_1"
+7. To test static queue.
+	a. In the board load Squeue_static.ko using "insmod Squeue_static.ko"
+	b. run "./main_1"
+
+-----------------------------------------------------------------------------------------------------------
+Perf tools analysis:
+Static code :
+This is calculated without print statements in main_1.c(user code) - file name : main_1_static
+cycles - 2,198,165,115
+instructions - 313,420,732
+Time elapsed - 10.346418554 seconds
+
+This is calculated with print statements in main_1.c - file name : main_1
+Dynamic code : 
+cycles - 3,902,352,200
+instructions - 386,079,130
+Time elapsed - 10.196793178 seconds
+
